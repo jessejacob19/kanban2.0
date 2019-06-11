@@ -69,5 +69,6 @@ function invalidCredentials(res) {
 
 //for all routes that satisfy /api/v1/cats we will use routes defined in our cats routes
 server.use("/api/v1/cats", require("./routes/cats"));
+server.use("api/v1/kanban", require("./routes/kanban"))
 
 module.exports = server;
