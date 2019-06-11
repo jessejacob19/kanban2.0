@@ -1,5 +1,8 @@
 const router = require("express").Router();
 // const db = require("../db/cats");####
+const boardDB = require('../db/board')
+const columnDB = require('../db/column')
+const cardDB = require('../db/card')
 
 // package to verify jwt tokens
 const verifyJwt = require("express-jwt");
@@ -18,8 +21,10 @@ router.use(
   auth.handleError
 );
 
-// router.get("/", (req, res) => {//#####
-//   db.getAll().then(cats => res.json(cats));
-// });
+router.get("/", (req, res) => {
+  let userID = 
+  boardDB.getBoards(userID)
+    .then(boards => res.json())
+});
 
 module.exports = router
