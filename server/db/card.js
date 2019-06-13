@@ -1,20 +1,30 @@
 const connection = require("./connection");
 
-function getCards(columnId, db = connection) {
-  return; //gets all the cards for a specific column
+function getCards(columnID, db = connection) {
+  return db("cards")
+  .where({id: columnID})
+  .select()
 }
 
-function deleteCard(cardId, db = connection) {
-  return; //deletes a specific card
+function deleteCard(cardID, db = connection) {
+  return db("cards")
+  .where({id: cardID})
+  .delete()
 }
-function editCardName(card, db = connection) {
-  return;
+function editCardName(cardID, newName, db = connection) {
+  return db("cards")
+  .where({id: cardID})
+  .update({name: newName})
 }
-function editCardDescription(card, db = connection) {
-  return;
+function editCardDescription(cardID, newDescription, db = connection) {
+  return db("cards")
+  .where({id: cardID})
+  .update({description: newDescription})
 }
-function editCardPos(card, db = connection) {
-  return;
+function editCardPos(cardID, newPos, db = connection) {
+  return db("cards")
+  .where({id: cardID})
+  .update({position: newPos})
 }
 function moveCard(cardId, newColumn, db = connection) {
   return; // moves card from one column to another
