@@ -27,6 +27,6 @@ MVP = *
   - API: superagent
   - Backend:
     - Routes: Express
-    - Database: Knex 
+    - Database: Knex, SQLite3
   - Auth: json web tokens (JWT)
   - testing: jest, enzyme, supertest, nock, sinon
