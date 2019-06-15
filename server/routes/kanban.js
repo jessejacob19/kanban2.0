@@ -20,11 +20,20 @@ router.use(
   }),
   auth.handleError
 );
-
+//######## board routes
 router.get("/", (req, res) => {
   let userID = 
   boardDB.getBoards(userID)
     .then(boards => res.json())
 });
 
+
+
+
+
+//####### column routes
+
+
+
+//####### card routes
 module.exports = router
