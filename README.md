@@ -5,7 +5,7 @@ A simple kanban board to organise my life and practice my testing skills
 *As a user I want to be able to:*
 MVP = *
 
-- [ ] log into my account
+- [x] log into my account
 - [ ] create a new board *
 - [ ] view all my boards *
 - [ ] edit a boards name & description
