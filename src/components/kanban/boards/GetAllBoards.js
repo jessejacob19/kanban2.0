@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { getAllBoardsAction } from "../../actions/kanban/getAllBoards";
+import { getAllBoardsAction } from "../../../actions/kanban/getAllBoards";
 
 class GetAllBoards extends Component {
   constructor(props) {

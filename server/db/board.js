@@ -3,12 +3,23 @@ const db = require("./connection");
 function getBoards(userID) {
   //####
   //gets all boards specific to the user
-  console.log("yeet");
   return db("boards")
     .where({ accountId: userID })
     .select();
   // where id == id
 }
+
+function addBoard(board) {
+  return db("boards")
+    .insert({
+      name: board.name,
+      accountId: board.userId
+    })
+    .then(() => {
+      return db("boards").select();
+    });
+}
+
 function deleteBoard(boardID) {
   //####
   //deletes a specific board
@@ -28,6 +39,7 @@ function editBoard(boardID, newName) {
 
 module.exports = {
   getBoards,
+  addBoard,
   deleteBoard,
   editBoard
 };

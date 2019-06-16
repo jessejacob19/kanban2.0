@@ -1,9 +1,9 @@
 const initialState = {
-  kanbanData: [],
+  boardData: [],
   loading: false
 };
 
-export default function kanban(state = initialState, action) {
+export default function boards(state = initialState, action) {
   switch (action.type) {
     case "LOADING":
       return {
@@ -14,7 +14,7 @@ export default function kanban(state = initialState, action) {
       return {
         ...state,
         loading: action.isFetching,
-        kanbanData: action.boards
+        boardData: action.boards
       };
   }
   return state;
