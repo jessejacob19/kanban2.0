@@ -3,17 +3,17 @@ import {connect} from 'react-redux'
 
 import { addBoardAction } from '../../../actions/kanban/addBoard'
 
-class AddBoard extends Component {
+class Board extends Component {
   constructor(props) {
     super(props);
     this.state = {  }
   }
   render() { 
-    return (
+    return ( 
       <div>
-        
+        this is board
       </div>
-    );
+     );
   }
 }
  
@@ -31,4 +31,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AddBoard);
+)(Board);
