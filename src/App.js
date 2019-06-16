@@ -11,6 +11,9 @@ import SaveOne from "./components/cats/saveOne";
 import DeleteOne from "./components/cats/DeleteOne";
 import EditOne from "./components/cats/EditOne";
 
+//kanban imports
+import GetAllBoards from './components/kanban/GetAllBoards'
+
 //auth imports
 import LoginForm from "./components/auth/login";
 import RegisterForm from "./components/auth/register";
@@ -64,6 +67,7 @@ class App extends Component {
                 <Route exact path="/deleteone" component={DeleteOne} />
                 <br />
                 <Route exact path="/editone" component={EditOne} />
+                <GetAllBoards/>
               </React.Fragment>
             )}
           </header>

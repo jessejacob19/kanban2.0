@@ -1,8 +1,8 @@
 const router = require("express").Router();
 // const db = require("../db/cats");####
-const boardDB = require('../db/board')
-const columnDB = require('../db/column')
-const cardDB = require('../db/card')
+const boardDB = require("../db/board");
+const columnDB = require("../db/column");
+const cardDB = require("../db/card");
 
 // package to verify jwt tokens
 const verifyJwt = require("express-jwt");
@@ -21,19 +21,14 @@ router.use(
   auth.handleError
 );
 //######## board routes
-router.get("/", (req, res) => {
-  let userID = 
-  boardDB.getBoards(userID)
-    .then(boards => res.json())
+router.get("/board/:id", (req, res) => {
+  console.log(1664);
+  let userID = req.params.id;
+  boardDB.getBoards(userID).then(boards => res.json(boards));
+  //.catch(err => console.err(err));
 });
-
-
-
-
 
 //####### column routes
 
-
-
 //####### card routes
-module.exports = router
+module.exports = router;

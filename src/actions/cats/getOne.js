@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import decode from "jwt-decode";
 //stretch goal - move this into a utilities file so we don't need to write it in every single action
 
 // get the token from localstorage
@@ -7,10 +7,11 @@ import { get } from "../../authUtilities/localstorage";
 const token = get("token");
 
 //append the token to our API requests - without this you'll get an access forbidden error
-axios.defaults.headers.common = { Authorization: `bearer ${token}` };
+//axios.defaults.headers.common = { Authorization: `bearer ${token}` };
 
 // This will make an API request to get cat by id, while telling redux its loading and what response comes back
 export function getOneAction(id) {
+  console.log(decode(token).id);
   return function(dispatch) {
     dispatch(loading());
     axios.get(`/api/v1/cats/${id}`).then(response => {

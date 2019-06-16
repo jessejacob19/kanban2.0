@@ -1,24 +1,28 @@
-const connection = require('./connection')
+const db = require("./connection");
 
-function getBoards(userID, db = connection) {//####
+function getBoards(userID) {
+  //####
   //gets all boards specific to the user
+  console.log("yeet");
   return db("boards")
-  .where({id: userID})
-  .select()
+    .where({ accountId: userID })
+    .select();
   // where id == id
 }
-function deleteBoard(boardID, db = connection) {//####
+function deleteBoard(boardID) {
+  //####
   //deletes a specific board
   return db("boards")
-  .where({id: boardID})
-  .delete()
+    .where({ id: boardID })
+    .delete();
   // where id == id
 }
-function editBoard(boardID, newName, db = connection) {//#####
+function editBoard(boardID, newName) {
+  //#####
   return db("boards")
-  .where({id: boardID})
-  .update({name: newName})
-  
+    .where({ id: boardID })
+    .update({ name: newName });
+
   // edits the boards name
 }
 
@@ -26,5 +30,4 @@ module.exports = {
   getBoards,
   deleteBoard,
   editBoard
-
-}
+};
