@@ -21,7 +21,9 @@ class GetAllBoards extends Component {
   }
 }
 function mapStateToProps(state) {
-  return state;
+  return {
+    state: state
+  };
 }
 function mapDispatchToProps(dispatch) {
   return {
