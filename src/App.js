@@ -7,6 +7,7 @@ import "./App.css";
 //kanban imports
 //import GetAllBoards from "./components/kanban/GetAllBoards";
 import Boards from "./components/kanban/boards/Boards";
+import Board from "./components/kanban/boards/Board";
 //import Boards from "./components/kanban/boards/Boards";
 
 //auth imports
@@ -33,6 +34,7 @@ class App extends Component {
   };
 
   render() {
+    console.log(44, this.props);
     return (
       <Router>
         <div className="App">
@@ -54,6 +56,7 @@ class App extends Component {
               <React.Fragment>
                 <Logout user={this.props.auth.user.username} />
                 <Route exact path="/board" component={Boards} />
+                <Route exact path="/board/:boardId" component={Board} />
               </React.Fragment>
             )}
           </header>

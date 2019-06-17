@@ -27,24 +27,22 @@ router.get("/board/:userId", (req, res) => {
   //.catch(err => console.err(err));
 });
 
-router.get("/data/boards/:userId", (req, res) => {
-  let userID = req.params.userId
-  boardDB.getBoards(userID)
-  .then(boards => {
-    for (let i = 0; i < boards.length; i++) {
-      columnDB.getColumns(boards[i].id)
-        .then(columns => {
-          for (let j = 0; j < columns.length; j++) {
-            cardDB.getCards(columns[j].id)
-              .then(cards => {
-                columns[j].cards = cards
-              })
-          }
-          board[i].columns = columns
-        })
-    }
-    return res.json(boards);
-  })
-})
+router.get("/data/boards/:boardId", (req, res) => {
+  let boardId = req.params.boardId;
+  boardDB.getBoard(boardId).then(board => {
+    console.log(34, board);
+    // for (let i = 0; i < boards.length; i++) {
+    //   columnDB.getColumns(boards[i].id).then(columns => {
+    //     for (let j = 0; j < columns.length; j++) {
+    //       cardDB.getCards(columns[j].id).then(cards => {
+    //         columns[j].cards = cards;
+    //       });
+    //     }
+    //     board[i].columns = columns;
+    //   });
+    // }
+    return res.json(board);
+  });
+});
 
 module.exports = router;

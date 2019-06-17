@@ -9,6 +9,12 @@ function getBoards(userID) {
   // where id == id
 }
 
+function getBoard(boardID) {
+  return db("boards")
+    .where({ id: boardID })
+    .select();
+}
+
 function addBoard(board) {
   return db("boards")
     .insert({
@@ -39,6 +45,7 @@ function editBoard(boardID, newName) {
 
 module.exports = {
   getBoards,
+  getBoard,
   addBoard,
   deleteBoard,
   editBoard

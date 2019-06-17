@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
-import { addBoardAction } from "../../../actions/kanban/addBoard";
+import { getBoardAction } from "../../../actions/kanban/getBoard";
 
 class Board extends Component {
   constructor(props) {
@@ -10,21 +10,12 @@ class Board extends Component {
     this.state = {};
   }
   componentDidMount() {
-    this.props.addBoard();
+    this.props.getBoard(this.props.match.params.boardId);
   }
   render() {
     return (
       <div>
-        {this.props.state.boards.boardData.map(data => {
-          return (
-            // <Link >
-            //   <p>{data.name}</p>
-            // </Link>
-            <div>
-              <Link to={`/board/${data.id}`}>{data.name}</Link>
-            </div>
-          );
-        })}
+        <p>hello</p>
       </div>
     );
   }
@@ -37,7 +28,7 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
   return {
-    addBoard: () => dispatch(addBoardAction())
+    getBoard: id => dispatch(getBoardAction(id))
   };
 }
 

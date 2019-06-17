@@ -18,7 +18,9 @@ class Board extends Component {
         {this.props.state.boards.boardData.map(data => {
           return (
             <div>
-              <Link to={`/board/${data.id}`}>{data.name}</Link>
+              <Link key={data.id} to={`/board/${data.id}`}>
+                {data.name}
+              </Link>
             </div>
           );
         })}

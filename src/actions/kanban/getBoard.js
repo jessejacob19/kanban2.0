@@ -2,7 +2,7 @@ import axios from "axios";
 import { get } from "../../authUtilities/localstorage";
 import decode from "jwt-decode";
 
-export function getAllBoardsAction() {
+export function getBoardAction() {
   const token = get("token");
   axios.defaults.headers.common = { Authorization: `bearer ${token}` };
   let userId = decode(token).id;
