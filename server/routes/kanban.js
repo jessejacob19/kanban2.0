@@ -20,15 +20,31 @@ router.use(
   }),
   auth.handleError
 );
-//######## board routes
-router.get("/board/:id", (req, res) => {
-  console.log(1664);
-  let userID = req.params.id;
+//######## kanban routes
+router.get("/board/:userId", (req, res) => {
+  let userID = req.params.userId;
   boardDB.getBoards(userID).then(boards => res.json(boards));
   //.catch(err => console.err(err));
 });
 
-//####### column routes
+router.get("/data/boards/:userId", (req, res) => {
+  let userID = req.params.userId
+  boardDB.getBoards(userID)
+  .then(boards => {
+    for (let i = 0; i < boards.length; i++) {
+      columnDB.getColumns(boards[i].id)
+        .then(columns => {
+          for (let j = 0; j < columns.length; j++) {
+            cardDB.getCards(columns[j].id)
+              .then(cards => {
+                columns[j].cards = cards
+              })
+          }
+          board[i].columns = columns
+        })
+    }
+    return res.json(boards);
+  })
+})
 
-//####### card routes
 module.exports = router;

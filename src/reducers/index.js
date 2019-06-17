@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
 import auth from "./auth";
 import boards from "./boards";
+import board from "./board";
 //combine all reducer files and squish them into one object. this overall object is our Redux Store State
 export default combineReducers({
   auth, //we now have auth and boards in our combined redux store state
-  boards
+  boards,
+  board
 });

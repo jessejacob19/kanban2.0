@@ -1,23 +1,25 @@
-const connection = require('./connection')
+const db = require('./connection')
 
-function getColumns(boardId, db = connection) {
-  return //gets all the columns for a specific board
+function getColumns(boardID) {
+  return db("columns")
+    .where({boardId: boardID})
+    .select()
 }
 
-function deleteColumn(columnId, db = connection) {
+function deleteColumn(columnId) {
   return //deletes a specific column
 }
 
-function editColumnName(columnId, columnName, db = connection) {
+function editColumnName(columnId, columnName) {
   return // edits a column name
 }
-function editColumnPos(columnId, columnPos, db = connection) {
+function editColumnPos(columnId, columnPos) {
   return // edits a column position
 }
-function editColumnHeight(columnId, columnPos, db = connection) {
+function editColumnHeight(columnId, columnPos) {
   return // edits a column height
 }
-function editColumnWidth(columnId, columnPos, db = connection) {
+function editColumnWidth(columnId, columnPos) {
   return // edits a column width
 }
 

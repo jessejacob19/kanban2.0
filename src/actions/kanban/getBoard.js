@@ -8,12 +8,12 @@ export function getAllBoardsAction() {
   let userId = decode(token).id;
   return function(dispatch) {
     dispatch(loading());
-    axios.get(`/api/v1/kanban/board/${userId}`).then(res => {
-      console.log(res.data);
+    ///data/boards/:userId
+    axios.get(`/api/v1/kanban/data/boards/${userId}`).then(res => {
       if (!res.status == 200) {
         dispatch(errorMessage(res.status));
       } else {
-        dispatch(recieveBoards(res.data));
+        dispatch(recieveBoard(res.data));
       }
     });
   };
@@ -33,10 +33,10 @@ function errorMessage(err) {
     err
   };
 }
-function recieveBoards(boards) {
+function recieveBoard(board) {
   return {
     type: "SUCCESS",
     isFetching: false,
-    boards
+    board
   };
 }

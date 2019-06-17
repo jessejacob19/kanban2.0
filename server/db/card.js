@@ -1,32 +1,32 @@
-const connection = require("./connection");
+const db = require("./connection");
 
-function getCards(columnID, db = connection) {
+function getCards(columnID) {
   return db("cards")
-  .where({id: columnID})
+  .where({columnId: columnID})
   .select()
 }
 
-function deleteCard(cardID, db = connection) {
+function deleteCard(cardID) {
   return db("cards")
   .where({id: cardID})
   .delete()
 }
-function editCardName(cardID, newName, db = connection) {
+function editCardName(cardID, newName) {
   return db("cards")
   .where({id: cardID})
   .update({name: newName})
 }
-function editCardDescription(cardID, newDescription, db = connection) {
+function editCardDescription(cardID, newDescription) {
   return db("cards")
   .where({id: cardID})
   .update({description: newDescription})
 }
-function editCardPos(cardID, newPos, db = connection) {
+function editCardPos(cardID, newPos) {
   return db("cards")
   .where({id: cardID})
   .update({position: newPos})
 }
-function moveCard(cardId, newColumn, db = connection) {
+function moveCard(cardId, newColumn) {
   return; // moves card from one column to another
   // dont know if im gonna move the position aswell
 }
