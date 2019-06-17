@@ -7,9 +7,9 @@ MVP = *
 
 - [x] log into my account
 - [ ] create a new board *
-- [ ] view all my boards *
+- [x] view all my boards *
 - [ ] edit a boards name & description
-- [ ] view a specific board *
+- [x] view a specific board *
 - [ ] new boards should default to TODO, DOING DONE columns *
 - [ ] add columns to a board
 - [ ] del colums from a board
