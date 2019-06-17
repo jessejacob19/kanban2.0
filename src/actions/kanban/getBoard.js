@@ -2,14 +2,13 @@ import axios from "axios";
 import { get } from "../../authUtilities/localstorage";
 import decode from "jwt-decode";
 
-export function getBoardAction() {
+export function getBoardAction(boardId) {
   const token = get("token");
   axios.defaults.headers.common = { Authorization: `bearer ${token}` };
-  let userId = decode(token).id;
   return function(dispatch) {
     dispatch(loading());
     ///data/boards/:userId
-    axios.get(`/api/v1/kanban/data/boards/${userId}`).then(res => {
+    axios.get(`/api/v1/kanban/data/boards/${boardId}`).then(res => {
       if (!res.status == 200) {
         dispatch(errorMessage(res.status));
       } else {

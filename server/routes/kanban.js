@@ -30,18 +30,14 @@ router.get("/board/:userId", (req, res) => {
 router.get("/data/boards/:boardId", (req, res) => {
   let boardId = req.params.boardId;
   boardDB.getBoard(boardId).then(board => {
-    console.log(34, board);
-    // for (let i = 0; i < boards.length; i++) {
-    //   columnDB.getColumns(boards[i].id).then(columns => {
-    //     for (let j = 0; j < columns.length; j++) {
-    //       cardDB.getCards(columns[j].id).then(cards => {
-    //         columns[j].cards = cards;
-    //       });
-    //     }
-    //     board[i].columns = columns;
-    //   });
-    // }
-    return res.json(board);
+    columnDB.getColumns(board[0].id).then(async columns => {
+      board[0].columns = columns;
+      for (let i = 0; i < columns.length; i++) {
+        let cards = await cardDB.getCards(columns[i].id);
+        board[0].columns[i].cards = cards;
+      }
+      return res.json(board);
+    });
   });
 });
 

@@ -15,6 +15,10 @@ function getBoard(boardID) {
     .select();
 }
 
+
+
+
+
 function addBoard(board) {
   return db("boards")
     .insert({

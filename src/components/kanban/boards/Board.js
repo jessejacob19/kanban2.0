@@ -10,6 +10,7 @@ class Board extends Component {
     this.state = {};
   }
   componentDidMount() {
+    console.log("i was triggered during component did mount")
     this.props.getBoard(this.props.match.params.boardId);
   }
   render() {
