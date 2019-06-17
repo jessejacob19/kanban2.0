@@ -4,16 +4,10 @@ import { HashRouter as Router, Route } from "react-router-dom";
 
 import "./App.css";
 
-//cats imports
-import GetAll from "./components/cats/GetAll";
-import GetOne from "./components/cats/GetOne";
-import SaveOne from "./components/cats/saveOne";
-import DeleteOne from "./components/cats/DeleteOne";
-import EditOne from "./components/cats/EditOne";
-
 //kanban imports
-import GetAllBoards from './components/kanban/GetAllBoards'
-import 
+//import GetAllBoards from "./components/kanban/GetAllBoards";
+import Board from "./components/kanban/boards/Board";
+//import Boards from "./components/kanban/boards/Boards";
 
 //auth imports
 import LoginForm from "./components/auth/login";
@@ -59,16 +53,7 @@ class App extends Component {
             {this.props.auth.isAuthenticated && (
               <React.Fragment>
                 <Logout user={this.props.auth.user.username} />
-                <Route exact path="/getall" component={GetAll} />
-                <br />
-                <Route exact path="/getone" component={GetOne} />
-                <br />
-                <Route exact path="/saveone" component={SaveOne} />
-                <br />
-                <Route exact path="/deleteone" component={DeleteOne} />
-                <br />
-                <Route exact path="/editone" component={EditOne} />
-                <GetAllBoards/>
+                <Route exact path="/board" component={Board} />
               </React.Fragment>
             )}
           </header>

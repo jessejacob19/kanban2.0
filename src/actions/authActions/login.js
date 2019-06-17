@@ -1,6 +1,8 @@
 import axios from "axios";
 import { saveUserToken } from "../../authUtilities/auth";
-import { getAllAction } from "../cats/getAll";
+import decode from 'jwt-decode'
+
+import { getAllBoardsAction } from '../kanban/getAllBoards'
 
 // Generally we use const here so that in our reducers we can import the const and prevent any typos. Writing strings "like this" won't break the code and this makes it hard to debug. Whereas mistyping a constant will.
 
@@ -57,7 +59,10 @@ export function loginUser(creds) {
           // Dispatch the success action
 
           dispatch(receiveLogin(userInfo));
-          // dispatch(getAllAction());
+          //gets the id of the user
+          const userID = decode(response.data.token).id
+          //grabs all the different boards the user has access to
+          dispatch(getAllBoardsAction(userID))
           //
           //now that we're logged in go get me my cats
           //we can find user specific cats now that our userInfo exists in the line above.

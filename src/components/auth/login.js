@@ -1,8 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getAllAction } from "../../actions/cats/getAll";
 import { loginUser } from "../../actions/authActions/login";
+import { getAllBoardsAction } from '../../actions/kanban/getAllBoards'
 import ErrorMessage from "./errorMessage";
+
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class LoginForm extends React.Component {
       password: password.trim()
     };
     this.props.loginUser(creds);
-    // this.props.getAll()
+    this.props.getAllBoards()
   }
 
   handleError() {
@@ -78,8 +79,8 @@ const mapDispatchToProps = dispatch => {
     loginUser: creds => {
       return dispatch(loginUser(creds));
     },
-    getAll: () => {
-      return dispatch(getAllAction());
+    getAllBoards: () => {
+      return dispatch(getAllBoardsAction())
     }
   };
 };

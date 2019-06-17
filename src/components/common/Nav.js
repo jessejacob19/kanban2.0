@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import { Link } from "react-router-dom";
 class Nav extends React.Component {
   constructor(props) {
     super(props);
@@ -10,7 +11,7 @@ class Nav extends React.Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <a className="navbar-brand" href="/">
-          Auth Cats
+          OrganiseMe
         </a>
         <button
           className="navbar-toggler"
@@ -30,6 +31,11 @@ class Nav extends React.Component {
                 Home <span className="sr-only">(current)</span>
               </a>
             </li>
+            {this.props.auth.isAuthenticated && (
+              <li className="nav-item active">
+                <Link to="/board">Your Boards</Link>
+              </li>
+            )}
             {!this.props.auth.isAuthenticated && (
               <React.Fragment>
                 <li className="nav-item">
@@ -44,7 +50,7 @@ class Nav extends React.Component {
                 </li>
               </React.Fragment>
             )}
-            {this.props.auth.isAuthenticated && (
+            {/* {this.props.auth.isAuthenticated && (
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
@@ -77,7 +83,7 @@ class Nav extends React.Component {
                   </a>
                 </div>
               </li>
-            )}
+            )} */}
           </ul>
         </div>
       </nav>
